@@ -1,0 +1,26 @@
+ojciec(piotr, dominik). /* X jest ojcem Y */
+ojciec(piotr, zuzia).
+ojciec(jan, piotr).
+matka(agnieszka, dominik). /* X jest matką Y */
+matka(agnieszka, zuzia).
+mężczyzna(piotr). /* X jest mężczyzną */
+mężczyzna(dominik).
+mężczyzna(jan).
+kobieta(agnieszka). /* X jest kobietą */
+kobieta(zuzia).
+
+
+rodzic(X, Y) :- matka(X, Y); ojciec(X,Y). /* X jest rodzicem Y */
+diff(X, Y) :- X =\= Y. /* X i Y są różne */
+jest_matką(X) :- matka(X,_). /* X jest matką */
+jest_ojcem(X) :- mężczyzna(X), rodzic(X,_). /* X jest ojcem */
+jest_synem(X) :- mężczyzna(X), rodzic(_,X). /* X jest synem */
+siostra(X, Y) :- kobieta(X), rodzeństwo(X,Y). /* X jest siostrą Y */
+dziadek(X, Y) :- mężczyzna(X), rodzic(X,Z), rodzic(Z,Y). /* X jest dziadkiem Y */
+rodzeństwo(X, Y) :- diff(X,Y), rodzic(Z,X), rodzic(Z,Y). /* X i Y są rodzeństwem */
+
+
+
+
+
+

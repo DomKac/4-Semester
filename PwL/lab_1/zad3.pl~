@@ -1,0 +1,12 @@
+
+
+arc(a,b).
+arc(b,a).
+arc(b,c).
+arc(c,d).
+osiagalny(X,X) :- true.
+osiagalny(X,Y) :- arc(X,Y).
+osiagalny(X,Y) :- lista(X,Y,[X]).
+
+lista(X,Y,L) :- arc(X,Z), not(member(Z,L)), lista(Z, Y, [Z|L]).
+
